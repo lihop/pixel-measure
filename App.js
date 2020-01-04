@@ -6,14 +6,17 @@
  * @flow
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import {
@@ -23,50 +26,103 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {css} from '@emotion/native';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
+import Orientation from 'react-native-orientation-locker';
+import Ruler from './src/native/RulerModule';
+import {observer} from 'mobx-react';
+import {useStores} from './src/store/allStores';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
+import RNDrawOverlay from 'react-native-draw-overlay';
 
-const App: () => React$Node = () => {
+const App = () => {
+  const {image} = useStores();
+
+  useEffect(() => {
+    changeNavigationBarColor('#ffffff');
+  }, []);
+
+  useEffect(() => {
+    //console.log(image.images);
+  }, [image.images]);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
+        <View
+          style={css`
+            height: 100%;
+            background-color: #eed202;
+            display: flex;
+            padding: 16px;
+          `}>
+          <Text
+            style={css`
+              font-family: sans-serif;
+              font-size: 60px;
+              font-weight: 700;
+            `}>
+            Pixel Measure
+          </Text>
+          <TouchableOpacity
+            onPress={async () => {
+              try {
+                await RNDrawOverlay.askForDispalayOverOtherAppsPermission();
+                console.log('permissien gratnde!');
+
+                Ruler.launch('PORTRAIT', true);
+              } catch (e) {
+                Alert.alert(
+                  'Permission Required',
+                  'In order to use this app permission is required to draw over other apps.',
+                );
+              }
+            }}
+            style={css`
+              border: 5px solid black;
+              width: 300px;
+              height: 100px;
+              margin-top: 50px;
+            `}>
+            <View
+              style={css`
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+              `}>
+              <EntypoIcon
+                name="ruler"
+                style={css`
+                  margin: 20px;
+                  font-size: 45px;
+                `}
+              />
+              <Text
+                style={css`
+                  flex: 1;
+                  font-size: 45px;
+                  font-weight: 700;
+                `}>
+                Ruler
+              </Text>
             </View>
+          </TouchableOpacity>
+          {false && image && image.images && image.images.length > 0 && (
+            <Image
+              width="200px"
+              height="200px"
+              style={css`
+                width: 200px;
+                height: 200px;
+                background-color: green;
+              `}
+              source={{uri: image.images[0].uri}}
+            />
           )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
+        </View>
       </SafeAreaView>
     </>
   );
@@ -111,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default observer(App);

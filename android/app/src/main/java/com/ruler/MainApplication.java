@@ -1,16 +1,28 @@
 package com.ruler;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.hardware.display.DisplayManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.view.WindowManager;
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+
 public class MainApplication extends Application implements ReactApplication {
+    private DisplayManager.DisplayListener mDisplayListener;
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {
@@ -25,6 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new ScreenshotPackage());
+          packages.add(new RulerPackage());
           return packages;
         }
 
@@ -44,6 +58,29 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+
+    mDisplayListener = new DisplayManager.DisplayListener() {
+        @Override
+        public void onDisplayAdded(int displayId) {
+        }
+
+        @Override
+        public void onDisplayChanged(int displayId) {
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            int screenOrientation = wm.getDefaultDisplay().getOrientation();
+
+            if (rotateHandler != null) {
+                rotateHandler.onRotate(screenOrientation);
+            }
+        }
+
+        @Override
+        public void onDisplayRemoved(int displayId) {
+        }
+    };
+
+    DisplayManager displayManager = (DisplayManager) getSystemService(Context.DISPLAY_SERVICE);
+    displayManager.registerDisplayListener(mDisplayListener, new Handler(Looper.getMainLooper()));
   }
 
   /**
@@ -71,4 +108,20 @@ public class MainApplication extends Application implements ReactApplication {
       }
     }
   }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d("LEROY", "MainApplication -> config changed!");
+
+        if (rotateHandler != null) {
+//            rotateHandler.onRotate(newConfig.orientation);
+        }
+    }
+
+    public RotateHandler rotateHandler = null;
+
+    interface RotateHandler {
+      void onRotate(int orientation);
+    }
 }

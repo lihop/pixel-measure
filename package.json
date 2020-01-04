@@ -10,11 +10,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@emotion/native": "^10.0.27",
+    "@react-native-community/async-storage": "^1.7.1",
+    "lodash": "^4.17.15",
+    "mobx": "^5.15.2",
+    "mobx-persist": "^0.4.1",
+    "mobx-react": "^6.1.5",
     "react": "16.9.0",
-    "react-native": "0.61.5"
+    "react-native": "0.61.5",
+    "react-native-draggable": "^3.0.0",
+    "react-native-draw-overlay": "^1.0.1",
+    "react-native-gesture-handler": "^1.5.3",
+    "react-native-navigation-bar-color": "^1.0.0",
+    "react-native-orientation-locker": "^1.1.8",
+    "react-native-svg": "^10.0.0",
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-view-shot": "^3.0.2",
+    "react-use": "^13.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-decorators": "^7.7.4",
     "@babel/runtime": "^7.7.7",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
