@@ -1,4 +1,4 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import android.view.View
 import com.facebook.react.ReactPackage;

@@ -1,4 +1,4 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import android.app.*
 import android.content.Context
@@ -6,50 +6,11 @@ import android.content.Intent
 import android.graphics.*
 import android.os.Build
 import android.os.IBinder
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import android.widget.TextView
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.util.DisplayMetrics
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.util.Collections.rotate
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.*
 import android.view.WindowManager.LayoutParams.*
-import android.widget.RelativeLayout
-import java.text.DecimalFormat
-import android.view.MotionEvent
-import android.view.View.GONE
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.facebook.react.views.image.ReactImageManager
-import java.util.Arrays.asList
-import com.facebook.react.bridge.ReactApplicationContext
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.util.Arrays.asList
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
-
-
-
-
 
 
 /**

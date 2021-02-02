@@ -1,20 +1,16 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import android.os.Bundle
-import com.facebook.react.common.LifecycleState
-import com.facebook.react.shell.MainReactPackage
 import com.facebook.react.ReactInstanceManager
 import com.facebook.react.ReactRootView
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 import android.app.Activity
 import android.graphics.PixelFormat
 import android.os.Build
-import android.util.Log
 import android.view.WindowManager
-import com.facebook.react.ReactActivity
 import com.facebook.react.ReactApplication
 
-class OverlayActivity : Activity(), DefaultHardwareBackBtnHandler {
+class PointActivity : Activity(), DefaultHardwareBackBtnHandler {
     private var mReactRootView: ReactRootView? = null
     private var mReactInstanceManager: ReactInstanceManager? = null
 
@@ -24,7 +20,7 @@ class OverlayActivity : Activity(), DefaultHardwareBackBtnHandler {
         mReactRootView = ReactRootView(this)
         val reactApplication : ReactApplication = application as ReactApplication
         mReactInstanceManager = reactApplication.reactNativeHost.reactInstanceManager
-        mReactRootView!!.startReactApplication(mReactInstanceManager, "Overlay", null)
+        mReactRootView!!.startReactApplication(mReactInstanceManager, "Point", null)
 
         val wm = getWindowManager() as WindowManager
 

@@ -1,4 +1,4 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import android.content.res.Configuration
 import com.facebook.react.uimanager.SimpleViewManager

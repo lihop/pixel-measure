@@ -1,7 +1,6 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.*
 import android.os.Bundle
@@ -11,10 +10,7 @@ import android.util.AttributeSet
 import android.util.Log
 import com.github.anastr.rulerview.RulerUnit
 import android.graphics.DashPathEffect
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.*
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactContext
 import com.facebook.react.uimanager.events.RCTEventEmitter
@@ -205,7 +201,7 @@ class RulerView : View {
 
         mOrientation = Configuration.ORIENTATION_PORTRAIT
 
-        ((context as ReactContext).currentActivity!!.application as MainApplication).rotateHandler = MainApplication.RotateHandler {ori ->
+        ((context as ReactContext).currentActivity!!.application as MainApplication).rotateHandler = MainApplication.RotateHandler { ori ->
             Log.d("LEROYROTATE", "ROTATE CHANGED RulerView")
 
             val event = Arguments.createMap()

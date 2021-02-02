@@ -1,13 +1,8 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
-import android.app.Activity
-import android.content.res.Configuration
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.Rect
-import android.graphics.drawable.GradientDrawable
-import android.hardware.SensorManager
-import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -15,18 +10,9 @@ import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import com.facebook.react.ReactApplication
-import com.facebook.react.ReactRootView
 import com.facebook.react.bridge.*
-import com.facebook.react.uimanager.ReactRoot
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView
-import android.content.Context.DISPLAY_SERVICE
-import androidx.core.content.ContextCompat.getSystemService
-import android.R.string.no
-import android.R.attr.name
-import android.content.Context
 
 
 class RulerModule internal constructor(context: ReactApplicationContext, rulerViewManager: RulerViewManager) : ReactContextBaseJavaModule(context) {

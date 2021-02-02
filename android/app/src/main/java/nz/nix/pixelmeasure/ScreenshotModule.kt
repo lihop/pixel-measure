@@ -1,6 +1,5 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
-import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
@@ -17,12 +16,9 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat.getSystemService
 
 import android.graphics.Bitmap
-import android.media.Image.Plane
 import com.facebook.react.bridge.*
-import android.R.attr.bitmap
 import android.util.Base64
 import java.io.ByteArrayOutputStream
-import kotlin.reflect.KTypeProjection
 
 
 class ScreenshotModule internal constructor(context: ReactApplicationContext) : ReactContextBaseJavaModule(context) {

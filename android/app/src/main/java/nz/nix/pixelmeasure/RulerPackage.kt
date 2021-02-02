@@ -1,4 +1,4 @@
-package com.ruler
+package nz.nix.pixelmeasure
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
